@@ -1,0 +1,75 @@
+package project.uniquindio.cine.views;
+
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+
+@SuppressWarnings("serial")
+public class ViewRegister extends JFrame {
+	
+	
+	private JPanel contentPane;
+	private JTextField txtRegistrate;
+
+	/**
+	 * Create the frame.
+	 */
+	public ViewRegister() {
+		viewRegisterPanel();
+		this.setLocationRelativeTo(null);
+	}
+	
+	public void viewRegisterPanel() {
+		
+		this.setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 445, 481);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.BLACK);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		
+		JButton registerButton = new JButton("Registrarse");
+		registerButton.setVerticalAlignment(SwingConstants.TOP);
+		registerButton.setFont(new Font("Sylfaen", Font.BOLD, 17));
+		registerButton.setAutoscrolls(true);
+		registerButton.setBackground(Color.BLACK);
+		registerButton.setForeground(Color.BLACK);
+		registerButton.setBounds(136, 400, 141, 31);
+	
+		registerButton.addActionListener(new ActionListener() {
+
+			
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				dispose();
+				ViewMovies viewMovies = new ViewMovies();
+				viewMovies.setVisible(true);
+				
+				
+				
+			}
+			
+		} );
+		contentPane.setLayout(null);
+		contentPane.add(registerButton);
+		
+		txtRegistrate = new JTextField();
+		txtRegistrate.setBorder(null);
+		txtRegistrate.setFont(new Font("Sylfaen", Font.BOLD, 17));
+		txtRegistrate.setHorizontalAlignment(SwingConstants.CENTER);
+		txtRegistrate.setText("REGISTRATE");
+		txtRegistrate.setForeground(Color.WHITE);
+		txtRegistrate.setBackground(Color.BLACK);
+		txtRegistrate.setBounds(136, 11, 149, 25);
+		contentPane.add(txtRegistrate);
+		txtRegistrate.setColumns(10);
+	}
+}

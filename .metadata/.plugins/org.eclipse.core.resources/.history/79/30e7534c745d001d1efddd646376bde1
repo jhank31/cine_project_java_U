@@ -1,0 +1,141 @@
+package project.uniquindio.cine.views;
+
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JCheckBox;
+
+@SuppressWarnings("serial")
+public class ViewRegister extends JFrame {
+	
+	
+	private JPanel contentPane;
+	private JTextField titulo;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JLabel lblRecarga;
+	private JTextField textField_2;
+
+	/**
+	 * Create the frame.
+	 */
+	public ViewRegister() {
+		viewRegisterPanel();
+		this.setLocationRelativeTo(null);
+	}
+	
+	public void viewRegisterPanel() {
+		
+		this.setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 445, 481);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.BLACK);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		tituloView();
+		camposRegistro();
+		botonRegister();
+		
+		
+		
+	}
+	
+	public void camposRegistro() {
+		JLabel txtNombre = new JLabel("Nombre :");
+		txtNombre.setHorizontalAlignment(SwingConstants.RIGHT);
+		txtNombre.setFont(new Font("Sylfaen", Font.BOLD, 13));
+		txtNombre.setForeground(Color.WHITE);
+		txtNombre.setBounds(37, 83, 61, 25);
+		contentPane.add(txtNombre);
+		
+		JLabel txtCedula = new JLabel("Cédula :");
+		txtCedula.setHorizontalAlignment(SwingConstants.RIGHT);
+		txtCedula.setFont(new Font("Sylfaen", Font.BOLD, 14));
+		txtCedula.setForeground(Color.WHITE);
+		txtCedula.setBounds(37, 119, 61, 24);
+		contentPane.add(txtCedula);
+		
+		textField = new JTextField();
+		textField.setBounds(136, 82, 226, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(136, 118, 226, 20);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+	}
+	
+	public void tituloView() {
+		
+		
+		titulo = new JTextField();
+		titulo.setBorder(null);
+		titulo.setFont(new Font("Sylfaen", Font.BOLD, 17));
+		titulo.setHorizontalAlignment(SwingConstants.CENTER);
+		titulo.setText("REGISTRATE");
+		titulo.setForeground(Color.WHITE);
+		titulo.setBackground(Color.BLACK);
+		titulo.setBounds(128, 11, 149, 25);
+		contentPane.add(titulo);
+		titulo.setColumns(10);
+	}
+	
+	public void botonRegister() {
+		JButton registerButton = new JButton("Crear Usuario");
+		registerButton.setVerticalAlignment(SwingConstants.BOTTOM);
+		registerButton.setBorder(null);
+		registerButton.setFont(new Font("Sylfaen", Font.BOLD, 17));
+		registerButton.setAutoscrolls(true);
+		registerButton.setBackground(new Color(255, 255, 255));
+		registerButton.setForeground(Color.BLACK);
+		registerButton.setBounds(136, 400, 141, 31);
+		contentPane.setLayout(null);
+		contentPane.add(registerButton);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Basico");
+		chckbxNewCheckBox.setForeground(Color.WHITE);
+		chckbxNewCheckBox.setBackground(Color.BLACK);
+		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		chckbxNewCheckBox.setHorizontalAlignment(SwingConstants.CENTER);
+		chckbxNewCheckBox.setBounds(136, 288, 97, 23);
+		contentPane.add(chckbxNewCheckBox);
+		
+		lblRecarga = new JLabel("Recarga :");
+		lblRecarga.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblRecarga.setForeground(Color.WHITE);
+		lblRecarga.setFont(new Font("Sylfaen", Font.BOLD, 13));
+		lblRecarga.setBounds(37, 254, 61, 25);
+		contentPane.add(lblRecarga);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(136, 253, 226, 20);
+		contentPane.add(textField_2);
+	
+		registerButton.addActionListener(new ActionListener() {
+
+			
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				dispose();
+				ViewMovies viewMovies = new ViewMovies();
+				viewMovies.setVisible(true);
+				
+				
+				
+			}
+			
+		} );
+		
+	}
+}

@@ -1,0 +1,194 @@
+package project.uniquindio.cine.views;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.GridBagLayout;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+import project.uniquindio.cine.models.ModelMovie;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.JTextField;
+import java.awt.Panel;
+import java.awt.ScrollPane;
+
+public class ViewMovies extends JFrame {
+	public ViewMovies() {
+		viewSelectMovie();
+		this.setLocationRelativeTo(null);
+		
+	}
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private ModelMovie selectMovie  = new ModelMovie();
+	LocalDate fechahoy = LocalDate.now();
+	private JTextField textFieldCedula;
+
+	
+	
+	/**
+	 * Create the frame.
+	 * @return 
+	 */
+	public void viewSelectMovie() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+		
+		setSize(1000,750);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.BLACK);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel fecha = new JLabel(fechahoy.toString());
+		fecha.setForeground(Color.WHITE);
+		fecha.setHorizontalAlignment(SwingConstants.LEFT);
+		fecha.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		fecha.setBounds(59, 11, 106, 23);
+		contentPane.add(fecha);
+		
+		
+		JLabel tituloCine = new JLabel("Cine Quindio");
+		tituloCine.setForeground(Color.WHITE);
+		tituloCine.setFont(new Font("Sylfaen", Font.BOLD, 27));
+		tituloCine.setHorizontalAlignment(SwingConstants.CENTER);
+		tituloCine.setBounds(349, 37, 287, 76);
+		contentPane.add(tituloCine);
+		
+		
+		
+
+
+		GridBagLayout gbl_contentPane = new GridBagLayout();
+		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
+		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        
+		
+		getMovies(((ArrayList<?>) selectMovie.getFuncions().get(0)).get(4), ((ArrayList<?>) selectMovie.getFuncions().get(0)).get(3).toString(),  ((ArrayList<?>) selectMovie.getFuncions().get(0)).get(1).toString());
+		getMovies(((ArrayList<?>) selectMovie.getFuncions().get(1)).get(4), ((ArrayList<?>) selectMovie.getFuncions().get(1)).get(3).toString(),  ((ArrayList<?>) selectMovie.getFuncions().get(1)).get(1).toString());
+		getMovies(((ArrayList<?>) selectMovie.getFuncions().get(2)).get(4), ((ArrayList<?>) selectMovie.getFuncions().get(2)).get(3).toString(),  ((ArrayList<?>) selectMovie.getFuncions().get(2)).get(1).toString());
+
+		panelDataUser ();
+		decorationView();
+	
+}
+	
+	
+
+	public void getMovies(Object image, String texto, String posicion) {
+		JButton ButtonPelicula = new JButton("");
+		ButtonPelicula.setIcon(new ImageIcon("/Users/jhank/eclipse-workspace/CineProject/images/"+image+""));
+		ButtonPelicula.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(posicion);
+				
+	}
+		});
+		ButtonPelicula.setBounds(59, 111, 250, 310);
+		ButtonPelicula.setSize(200, 300);
+		contentPane.add(ButtonPelicula);
+		JLabel txtPelicula = new JLabel( "<html><p>" + texto + "</p></html>");
+		txtPelicula.setForeground(Color.WHITE);
+		txtPelicula.setVerticalAlignment(SwingConstants.TOP);
+		if (posicion.equals("0") || posicion.equals("3") || posicion.equals("6")) {
+			ButtonPelicula.setBounds(59, 129, 250, 310);
+			txtPelicula.setBounds(59, 451, 266, 160);
+		} else if(posicion.equals("1")) {
+			txtPelicula.setBounds(382, 451, 242, 176);
+			ButtonPelicula.setBounds(382, 129, 242, 310);
+		} else {
+			ButtonPelicula.setBounds(691, 129, 250, 310);
+			txtPelicula.setBounds(691, 451, 250, 190);
+		}
+		contentPane.add(txtPelicula);
+		
+    }
+	public void panelDataUser ( ) {
+		JLabel lblCdulaClei = new JLabel("Cédula cliente :");
+		lblCdulaClei.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblCdulaClei.setForeground(Color.WHITE);
+		lblCdulaClei.setFont(new Font("Sylfaen", Font.BOLD, 14));
+		lblCdulaClei.setBounds(40, 599, 106, 24);
+		contentPane.add(lblCdulaClei);
+		
+		textFieldCedula = new JTextField();
+		textFieldCedula.setColumns(10);
+		textFieldCedula.setBounds(166, 598, 226, 20);
+		contentPane.add(textFieldCedula);
+		
+		JButton rechargeButton = new JButton("Recargar");
+		rechargeButton.setVerticalAlignment(SwingConstants.BOTTOM);
+		rechargeButton.setForeground(Color.BLACK);
+		rechargeButton.setFont(new Font("Sylfaen", Font.BOLD, 17));
+		rechargeButton.setBorder(null);
+		rechargeButton.setBackground(Color.WHITE);
+		rechargeButton.setAutoscrolls(true);
+		rechargeButton.setBounds(508, 592, 141, 31);
+		contentPane.add(rechargeButton);
+		
+		
+		
+	}
+	public void decorationView() {
+		Panel panel = new Panel();
+		panel.setBackground(Color.DARK_GRAY);
+		panel.setBounds(752, 0, 232, 34);
+		contentPane.add(panel);
+		
+		Panel panel_1 = new Panel();
+		panel_1.setBackground(Color.GRAY);
+		panel_1.setBounds(615, 0, 141, 20);
+		contentPane.add(panel_1);
+		
+		Panel panel_1_1 = new Panel();
+		panel_1_1.setBackground(Color.LIGHT_GRAY);
+		panel_1_1.setBounds(490, 0, 129, 10);
+		contentPane.add(panel_1_1);
+		
+		Panel panel_2 = new Panel();
+		panel_2.setBackground(Color.DARK_GRAY);
+		panel_2.setBounds(0, 677, 232, 34);
+		contentPane.add(panel_2);
+		
+		Panel panel_1_2 = new Panel();
+		panel_1_2.setBackground(Color.GRAY);
+		panel_1_2.setBounds(232, 691, 141, 20);
+		contentPane.add(panel_1_2);
+		
+		Panel panel_1_1_1 = new Panel();
+		panel_1_1_1.setBackground(Color.LIGHT_GRAY);
+		panel_1_1_1.setBounds(373, 701, 129, 10);
+		contentPane.add(panel_1_1_1);
+		
+		Panel panel_1_1_1_1 = new Panel();
+		panel_1_1_1_1.setBackground(Color.DARK_GRAY);
+		panel_1_1_1_1.setBounds(0, 0, 10, 677);
+		contentPane.add(panel_1_1_1_1);
+		
+		Panel panel_1_1_1_1_1 = new Panel();
+		panel_1_1_1_1_1.setBackground(Color.DARK_GRAY);
+		panel_1_1_1_1_1.setBounds(974, 34, 10, 677);
+		contentPane.add(panel_1_1_1_1_1);
+		
+		Panel panel_1_1_2 = new Panel();
+		panel_1_1_2.setBackground(Color.GRAY);
+		panel_1_1_2.setBounds(845, 701, 129, 10);
+		contentPane.add(panel_1_1_2);
+		
+		Panel panel_1_1_2_1 = new Panel();
+		panel_1_1_2_1.setBackground(Color.GRAY);
+		panel_1_1_2_1.setBounds(0, 0, 128, 10);
+		contentPane.add(panel_1_1_2_1);
+	}
+}
