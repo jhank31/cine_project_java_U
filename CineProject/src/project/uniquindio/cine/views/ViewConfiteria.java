@@ -238,7 +238,7 @@ public class ViewConfiteria extends JFrame {
 		JLabel imgProduct7 = new JLabel();
 		imgProduct7.setBounds(504, 295, 100, 150);
 		imgProduct7.setSize(100, 150);
-		ImageIcon imagen = new ImageIcon("imagenes/cocacola.jpg");
+		ImageIcon imagen = new ImageIcon("imagenes/pepsi.jpg");
 		Icon icon = new ImageIcon(imagen.getImage().getScaledInstance(imgProduct7.getWidth(), imgProduct7.getHeight(), Image.SCALE_DEFAULT));
 		imgProduct7.setIcon(icon);
 		contentPane.add(imgProduct7);
@@ -261,7 +261,7 @@ public class ViewConfiteria extends JFrame {
 		JLabel imgProduct8 = new JLabel();
 		imgProduct8.setBounds(743, 295, 100, 150);
 		imgProduct8.setSize(100, 150);
-		ImageIcon imagen = new ImageIcon("imagenes/cocacola.jpg");
+		ImageIcon imagen = new ImageIcon("imagenes/monster.jpg");
 		Icon icon = new ImageIcon(imagen.getImage().getScaledInstance(imgProduct8.getWidth(), imgProduct8.getHeight(), Image.SCALE_DEFAULT));
 		imgProduct8.setIcon(icon);
 		contentPane.add(imgProduct8);
