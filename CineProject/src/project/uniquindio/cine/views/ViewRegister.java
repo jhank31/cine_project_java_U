@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JCheckBox;
 import java.awt.Panel;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class ViewRegister extends JFrame {
@@ -28,6 +29,7 @@ public class ViewRegister extends JFrame {
 	private JCheckBox checkBoxPlanGold;
 	private Panel panel_1;
 	private Panel panel_2;
+	private JButton btnRegresar;
 
 	/**
 	 * Create the frame.
@@ -42,6 +44,7 @@ public class ViewRegister extends JFrame {
 		this.setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 445, 443);
+		setSize(445,445);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -52,7 +55,7 @@ public class ViewRegister extends JFrame {
 		botonRegister();
 		checkBox();
 		decorationView();
-		
+		botonRegresar();
 		
 		
 	}
@@ -102,7 +105,7 @@ public class ViewRegister extends JFrame {
 		titulo.setText("REGISTRATE");
 		titulo.setForeground(Color.WHITE);
 		titulo.setBackground(Color.BLACK);
-		titulo.setBounds(128, 11, 149, 25);
+		titulo.setBounds(128, 15, 149, 20);
 		contentPane.add(titulo);
 		titulo.setColumns(10);
 	}
@@ -151,8 +154,29 @@ public class ViewRegister extends JFrame {
 		panel_2.setBackground(Color.LIGHT_GRAY);
 		panel_2.setBounds(0, 239, 23, 47);
 		contentPane.add(panel_2);
+		
+		
 	}
 		
+		
+	public void botonRegresar() {
+		btnRegresar = new JButton("Regresar");
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				ViewMovies viewMovies = new ViewMovies();
+				viewMovies.setVisible(true);
+			}
+		});
+		btnRegresar.setVerticalAlignment(SwingConstants.BOTTOM);
+		btnRegresar.setForeground(Color.BLACK);
+		btnRegresar.setFont(new Font("Sylfaen", Font.BOLD, 17));
+		btnRegresar.setBorder(null);
+		btnRegresar.setBackground(Color.LIGHT_GRAY);
+		btnRegresar.setAutoscrolls(true);
+		btnRegresar.setBounds(86, 333, 117, 31);
+		contentPane.add(btnRegresar);
+	}
 	
 	public void botonRegister() {
 		JButton registerButton = new JButton("Crear Usuario");
@@ -162,7 +186,7 @@ public class ViewRegister extends JFrame {
 		registerButton.setAutoscrolls(true);
 		registerButton.setBackground(Color.LIGHT_GRAY);
 		registerButton.setForeground(Color.BLACK);
-		registerButton.setBounds(136, 333, 141, 31);
+		registerButton.setBounds(255, 333, 141, 31);
 		contentPane.setLayout(null);
 		contentPane.add(registerButton);
 		registerButton.addActionListener(new ActionListener() {

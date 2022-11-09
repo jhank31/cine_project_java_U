@@ -13,6 +13,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Panel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class ViewRecharge extends JFrame {
@@ -45,6 +47,7 @@ public class ViewRecharge extends JFrame {
 		dataClient ();
 		tipoPlan ();
 		rechargeButtonPrinc ();	
+		botonregresar () ;
 		decorationView();
 		
 	}
@@ -143,6 +146,25 @@ public class ViewRecharge extends JFrame {
 		getContentPane().add(txtTipoPlan);
 		
 	}
+
+	public void botonregresar () {	
+		JButton btnRegresar = new JButton("Regresar");
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				ViewMovies viewMovies = new ViewMovies();
+				viewMovies.setVisible(true);
+			}
+		});
+		btnRegresar.setVerticalAlignment(SwingConstants.BOTTOM);
+		btnRegresar.setForeground(Color.BLACK);
+		btnRegresar.setFont(new Font("Sylfaen", Font.BOLD, 17));
+		btnRegresar.setBorder(null);
+		btnRegresar.setBackground(Color.LIGHT_GRAY);
+		btnRegresar.setAutoscrolls(true);
+		btnRegresar.setBounds(48, 325, 129, 31);
+		getContentPane().add(btnRegresar);
+	}
 	
 	public void rechargeButtonPrinc () {
 		JButton rechargeButton = new JButton("Comprar");
@@ -150,9 +172,9 @@ public class ViewRecharge extends JFrame {
 		rechargeButton.setForeground(Color.BLACK);
 		rechargeButton.setFont(new Font("Sylfaen", Font.BOLD, 17));
 		rechargeButton.setBorder(null);
-		rechargeButton.setBackground(Color.WHITE);
+		rechargeButton.setBackground(Color.LIGHT_GRAY);
 		rechargeButton.setAutoscrolls(true);
-		rechargeButton.setBounds(139, 328, 141, 31);
+		rechargeButton.setBounds(236, 325, 141, 31);
 		getContentPane().add(rechargeButton);
 		
 		
@@ -176,6 +198,8 @@ public class ViewRecharge extends JFrame {
 		panel_2.setBackground(Color.LIGHT_GRAY);
 		panel_2.setBounds(406, 92, 23, 47);
 		getContentPane().add(panel_2);
+		
+		
 		
 		
 	}

@@ -2,22 +2,25 @@ package project.uniquindio.cine.views;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
+import java.awt.Image;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import project.uniquindio.cine.models.ModelMovie;
+import project.uniquindio.cine.models.ModelUser;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
 import java.awt.Panel;
-import java.awt.SystemColor;
 
 public class ViewMovies extends JFrame {
 	public ViewMovies() {
@@ -27,6 +30,7 @@ public class ViewMovies extends JFrame {
 	}
 
 	private static final long serialVersionUID = 1L;
+	private ModelUser sillas = new ModelUser();
 	private JPanel contentPane;
 	private ModelMovie selectMovie  = new ModelMovie();
 	LocalDate fechahoy = LocalDate.now();
@@ -45,7 +49,7 @@ public class ViewMovies extends JFrame {
 		setSize(1000,750);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLACK);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
@@ -57,11 +61,11 @@ public class ViewMovies extends JFrame {
 		contentPane.add(fecha);
 		
 		
-		JLabel tituloCine = new JLabel("Cine Quindio");
+		JLabel tituloCine = new JLabel("CINE QUINDIO");
 		tituloCine.setForeground(Color.WHITE);
-		tituloCine.setFont(new Font("Sylfaen", Font.BOLD, 27));
+		tituloCine.setFont(new Font("Javanese Text", Font.BOLD, 27));
 		tituloCine.setHorizontalAlignment(SwingConstants.CENTER);
-		tituloCine.setBounds(349, 37, 287, 76);
+		tituloCine.setBounds(351, 26, 287, 76);
 		contentPane.add(tituloCine);
 		
 		
@@ -88,16 +92,18 @@ public class ViewMovies extends JFrame {
 	
 
 	public void getMovies(Object image, String texto, String posicion) {
-		JButton ButtonPelicula = new JButton("");
-		ButtonPelicula.setIcon(new ImageIcon("/Users/jhank/eclipse-workspace/CineProject/images/"+image+""));
+		JButton ButtonPelicula = new JButton();
+		ButtonPelicula.setSize(200, 300);
+		ImageIcon imageTemp = new ImageIcon("images/"+image+"");
+		Icon icon = new ImageIcon(imageTemp.getImage().getScaledInstance(ButtonPelicula.getWidth(), ButtonPelicula.getHeight(), Image.SCALE_DEFAULT));
+		ButtonPelicula.setIcon(icon);
 		ButtonPelicula.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(posicion);
+				sillas.peliculaSeleccionada = posicion;
 				
 	}
 		});
 		ButtonPelicula.setBounds(59, 111, 250, 310);
-		ButtonPelicula.setSize(200, 300);
 		contentPane.add(ButtonPelicula);
 		JLabel txtPelicula = new JLabel( "<html><p>" + texto + "</p></html>");
 		txtPelicula.setForeground(Color.WHITE);
@@ -158,6 +164,14 @@ public class ViewMovies extends JFrame {
 		contentPane.add(rechargeButton);
 		
 		JButton btnSiguiente = new JButton("Siguiente");
+		btnSiguiente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				ViewSalaCine viewSala = new ViewSalaCine();
+				viewSala.setVisible(true);
+				
+			}
+		});
 		btnSiguiente.setVerticalAlignment(SwingConstants.BOTTOM);
 		btnSiguiente.setForeground(Color.BLACK);
 		btnSiguiente.setFont(new Font("Sylfaen", Font.BOLD, 21));
@@ -184,6 +198,7 @@ public class ViewMovies extends JFrame {
 		contentPane.add(btnValidar);
 		
 		JButton btnCrearusuario = new JButton("Crear usuario");
+		btnCrearusuario.setVerticalAlignment(SwingConstants.BOTTOM);
 		btnCrearusuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -193,9 +208,9 @@ public class ViewMovies extends JFrame {
 		});
 		btnCrearusuario.setForeground(Color.BLACK);
 		btnCrearusuario.setFont(new Font("Sylfaen", Font.BOLD, 17));
-		btnCrearusuario.setBackground(SystemColor.info);
+		btnCrearusuario.setBackground(Color.LIGHT_GRAY);
 		btnCrearusuario.setAutoscrolls(true);
-		btnCrearusuario.setBounds(752, 54, 141, 43);
+		btnCrearusuario.setBounds(752, 59, 141, 41);
 		contentPane.add(btnCrearusuario);
 	}
 	
@@ -240,9 +255,12 @@ public class ViewMovies extends JFrame {
 		panel_1_1_1_1_1.setBounds(974, 34, 10, 677);
 		contentPane.add(panel_1_1_1_1_1);
 		
-		
-		
-		
+		JLabel lblCartelera = new JLabel("Cartelera");
+		lblCartelera.setHorizontalAlignment(SwingConstants.LEFT);
+		lblCartelera.setForeground(Color.WHITE);
+		lblCartelera.setFont(new Font("Javanese Text", Font.PLAIN, 24));
+		lblCartelera.setBounds(59, 71, 141, 49);
+		contentPane.add(lblCartelera);
 		
 		
 		
