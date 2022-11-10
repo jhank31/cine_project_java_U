@@ -9,4 +9,8 @@
     <fullyQualifiedTypeName name="java.awt.EventQueue"/>
     <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
     <fullyQualifiedTypeName name="java.awt.Dimension"/>
+    <fullyQualifiedTypeName name="javax.swing.Icon"/>
+    <fullyQualifiedTypeName name="java.awt.Image"/>
+    <fullyQualifiedTypeName name="project.uniquindio.cine.models.ModelUser"/>
+    <fullyQualifiedTypeName name="javax.swing.SpinnerNumberModel"/>
 </qualifiedTypeNameHistroy>

@@ -94,7 +94,7 @@ public class ViewMovies extends JFrame {
 	public void getMovies(Object image, String texto, String posicion) {
 		JButton ButtonPelicula = new JButton();
 		ButtonPelicula.setSize(200, 300);
-		ImageIcon imageTemp = new ImageIcon("images/"+image+"");
+		ImageIcon imageTemp = new ImageIcon("imagenes/"+image+"");
 		Icon icon = new ImageIcon(imageTemp.getImage().getScaledInstance(ButtonPelicula.getWidth(), ButtonPelicula.getHeight(), Image.SCALE_DEFAULT));
 		ButtonPelicula.setIcon(icon);
 		ButtonPelicula.addActionListener(new ActionListener() {
