@@ -1,9 +1,0 @@
-package project.uniquindio.cine.models;
-
-import java.util.ArrayList;
-
-public class ModelUser {
-	public ArrayList<String> sillasSeleccionadas = new ArrayList<String>();
-	public String peliculaSeleccionada = "";
-	
-}

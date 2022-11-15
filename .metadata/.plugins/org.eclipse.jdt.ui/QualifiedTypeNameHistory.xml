@@ -2,15 +2,21 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="javax.swing.BorderFactory"/>
     <fullyQualifiedTypeName name="gui.Ventana_Asignar_Pelicula_View"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.time.LocalDate"/>
-    <fullyQualifiedTypeName name="project.uniquindio.cine.models.ModelMovie"/>
     <fullyQualifiedTypeName name="javax.swing.JButton"/>
     <fullyQualifiedTypeName name="java.awt.EventQueue"/>
     <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
     <fullyQualifiedTypeName name="java.awt.Dimension"/>
     <fullyQualifiedTypeName name="javax.swing.Icon"/>
     <fullyQualifiedTypeName name="java.awt.Image"/>
-    <fullyQualifiedTypeName name="project.uniquindio.cine.models.ModelUser"/>
     <fullyQualifiedTypeName name="javax.swing.SpinnerNumberModel"/>
+    <fullyQualifiedTypeName name="java.awt.GridBagLayout"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+    <fullyQualifiedTypeName name="javax.swing.border.EmptyBorder"/>
+    <fullyQualifiedTypeName name="javax.swing.JComboBox"/>
+    <fullyQualifiedTypeName name="project.uniquindio.cine.models.ModelSillas"/>
+    <fullyQualifiedTypeName name="project.uniquindio.cine.views.ViewMovies"/>
+    <fullyQualifiedTypeName name="project.uniquindio.cine.models.ModelMovie"/>
+    <fullyQualifiedTypeName name="project.uniquindio.cine.models.ModelUser"/>
 </qualifiedTypeNameHistroy>

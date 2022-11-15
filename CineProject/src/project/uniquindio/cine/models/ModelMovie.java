@@ -13,29 +13,29 @@ public class ModelMovie {
 		String ocho = "9:00 PM";
 		
 		ArrayList<String> primeraFuncion = new ArrayList<String>();
-		primeraFuncion.add("2022-10-13");
+		primeraFuncion.add("21");
 		primeraFuncion.add("0");
 		primeraFuncion.add(tres);
 		primeraFuncion.add(hunted);
 		primeraFuncion.add("hunted-200x300.jpg");
-		
+		primeraFuncion.add("Hunted");
 		
 		ArrayList<String> segundaFuncion = new ArrayList<String>();
-		segundaFuncion.add("2022-10-13");
+		segundaFuncion.add("21");
 		segundaFuncion.add("1");
 		segundaFuncion.add(cinco);
 		segundaFuncion.add(enolaHolmes);
 		segundaFuncion.add("enolaHolmes-200x300.jpg");
-		
+		segundaFuncion.add("Enola Holmes");
 		
 		
 		ArrayList<String> terceraFuncion = new ArrayList<String>();
-		terceraFuncion.add("2022/10/06");
+		terceraFuncion.add("21	");
 		terceraFuncion.add("2");
 		terceraFuncion.add(ocho);
 		terceraFuncion.add(men);
 		terceraFuncion.add("men-200x300.jpg");
-		
+		terceraFuncion.add("Men");
 	
 		funciones.add(primeraFuncion);
 		funciones.add(segundaFuncion);	

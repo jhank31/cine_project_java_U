@@ -1,0 +1,157 @@
+package project.uniquindio.cine.views;
+
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import project.uniquindio.cine.models.ModelUser;
+
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridBagLayout;
+
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JCheckBox;
+import java.awt.Panel;
+import java.awt.event.ActionEvent;
+
+@SuppressWarnings("serial")
+
+
+public class ViewRegister extends JFrame implements ActionListener {
+		
+		private JPanel contentPane;
+		private JTextField textFieldIntroducirCedula;
+		private JTextField textFieldIntroducirNombre;
+		private JTextField textFieldIntroducirMontoRecargar;
+		private JCheckBox checkBoxAsignarBasic ;
+		private JButton buttomCrearUsuario;
+		private ModelUser datosPersona;
+
+		
+		public ViewRegister() {
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			datosPersona = new ModelUser();
+			setResizable(false);	
+			this.setLocationRelativeTo(null);
+			setSize(500,500);
+			setBounds(250, 100, 315, 400);
+			contentPane = new JPanel();
+			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+			setContentPane(contentPane);
+			contentPane.setLayout(null);
+			
+			GridBagLayout gbl_contentPane = new GridBagLayout();
+			gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+			gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
+			gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+			gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+			
+			
+			
+			getRegistro();
+			
+		
+		}
+			 
+			public void getRegistro () {
+			JLabel lblNewLabel_3 = new JLabel("REGISTRO");
+			lblNewLabel_3.setBounds(119, 35, 196, 16);
+			contentPane.add(lblNewLabel_3);
+			
+			JLabel txtCedula = new JLabel("Cedula");
+			txtCedula.setBounds(45, 98, 61, 16);
+			contentPane.add(txtCedula);
+			
+			textFieldIntroducirCedula = new JTextField();
+			textFieldIntroducirCedula.setBounds(141, 93, 130, 26);
+			textFieldIntroducirCedula.addActionListener(this);
+			contentPane.add(textFieldIntroducirCedula);
+			textFieldIntroducirCedula.setColumns(10);
+			
+			JLabel txtNombre = new JLabel("Nombre");
+			 txtNombre.setBounds(45, 152, 61, 16);
+			contentPane.add( txtNombre);
+			
+			textFieldIntroducirNombre = new JTextField();
+			textFieldIntroducirNombre.setBounds(141, 147, 130, 26);
+			textFieldIntroducirNombre.addActionListener(this);
+			contentPane.add(textFieldIntroducirNombre);
+			textFieldIntroducirNombre.setColumns(10);
+			
+			
+			checkBoxAsignarBasic = new JCheckBox("Basic");
+			checkBoxAsignarBasic.setBounds(141, 187, 128, 23);
+			checkBoxAsignarBasic.addActionListener(this);
+			contentPane.add(checkBoxAsignarBasic);
+			
+			JLabel txtRegarga = new JLabel("Recarga $");
+			txtRegarga.setBounds(45, 227, 61, 16);
+			contentPane.add(txtRegarga);
+			
+			textFieldIntroducirMontoRecargar = new JTextField("0");
+			textFieldIntroducirMontoRecargar.setBounds(141, 222, 130, 26);
+			textFieldIntroducirMontoRecargar.addActionListener(this);
+			contentPane.add(textFieldIntroducirMontoRecargar);
+			textFieldIntroducirMontoRecargar.setColumns(10);
+			
+			 buttomCrearUsuario = new JButton("Crear Usuario");
+			buttomCrearUsuario.addActionListener(this);
+			buttomCrearUsuario.setBounds(92, 277, 117, 29);
+			contentPane.add(buttomCrearUsuario);
+			
+			
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if(e.getSource() == buttomCrearUsuario) {
+				
+				
+				
+				
+				String cedula = textFieldIntroducirCedula.getText();
+				String nombre = textFieldIntroducirNombre.getText();
+                int basic = 0;
+                String montoRecargar = textFieldIntroducirMontoRecargar.getText(); 
+                int numeroMontoRecarga =Integer.parseInt(montoRecargar);
+                
+				if(checkBoxAsignarBasic.isSelected()) {
+					basic = 1;
+				}
+				
+				
+				if (cedula.isEmpty() || nombre.isEmpty() || montoRecargar.isEmpty()) {
+					
+					JOptionPane.showMessageDialog(null, "Te faltan datos por ingresar!");
+
+					
+				}else {
+
+					System.out.println(cedula);
+					System.out.println(nombre);			
+					System.out.println(basic);
+					System.out.println(numeroMontoRecarga);
+
+					
+					
+					
+						datosPersona.addPersona(cedula,nombre,basic,numeroMontoRecarga);
+						
+						dispose();
+						JOptionPane.showMessageDialog(null, "Registro Exitoso");
+				}
+					
+				
+			}
+		}
+		
+	
+}

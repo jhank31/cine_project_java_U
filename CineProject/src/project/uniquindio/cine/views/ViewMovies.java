@@ -1,268 +1,358 @@
 package project.uniquindio.cine.views;
 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import project.uniquindio.cine.models.ModelMovie;
+import project.uniquindio.cine.models.ModelUser;
+
 import java.awt.GridBagLayout;
-import java.awt.Image;
+
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JLabel;
-import javax.swing.Icon;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
-import project.uniquindio.cine.models.ModelMovie;
-import project.uniquindio.cine.models.ModelUser;
-
+import javax.swing.JComboBox;
 import java.awt.Font;
 import java.awt.Color;
-import javax.swing.JTextField;
 import java.awt.Panel;
+import javax.swing.UIManager;
 
-public class ViewMovies extends JFrame {
-	public ViewMovies() {
-		viewSelectMovie();
-		this.setLocationRelativeTo(null);
-		
-	}
 
-	private static final long serialVersionUID = 1L;
-	private ModelUser sillas = new ModelUser();
-	private JPanel contentPane;
-	private ModelMovie selectMovie  = new ModelMovie();
-	LocalDate fechahoy = LocalDate.now();
-	private JTextField textFieldCedula;
 
+public class ViewMovies extends JFrame implements ActionListener  {
 	
-	
+
 	/**
-	 * Create the frame.
-	 * @return 
+	 * 
 	 */
-	public void viewSelectMovie() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setResizable(false);
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private ModelMovie asignarPelicula;
+	private ModelUser datosPersona;
+	
+	
+	LocalDate fechahoy = LocalDate.now();
+	private JTextField textFieldIngresoCedula;
+	private JButton capturar;
+	private JLabel txtNombrePersona;
+	private JButton buttomRecargar;
+	private JButton buttomRegistrarse;
+	String datoTextField;
+	String nombre = "";
+	int saldoActual;
+	JButton ButtomBuscar;
+	@SuppressWarnings("rawtypes")
+	JComboBox comboBoxDiaSeleccionado;
+	static String datoCedulaPerson;
+	String datoNombrePerson;
+    JLabel txtPelicula1;
+    String diaSeleccionado;
+    static String horaPelicula;
+    
+    static String nombrePelicula;
+
+
+
+	
+	public ViewMovies(String datoCedula, String datoNombre) {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
-		setSize(1000,750);
+		datoCedulaPerson = datoCedula;
+		datoNombrePerson = datoNombre;
+		asignarPelicula = new ModelMovie();
+		datosPersona = new ModelUser();
+		setResizable(false);
+		setSize(500,500);
+		setBounds(250, 50, 1000, 780);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLACK);
-		contentPane.setBorder(null);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel fecha = new JLabel(fechahoy.toString());
-		fecha.setForeground(Color.WHITE);
-		fecha.setHorizontalAlignment(SwingConstants.LEFT);
-		fecha.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		fecha.setBounds(59, 11, 106, 23);
-		contentPane.add(fecha);
 		
-		
-		JLabel tituloCine = new JLabel("CINE QUINDIO");
-		tituloCine.setForeground(Color.WHITE);
-		tituloCine.setFont(new Font("Javanese Text", Font.BOLD, 27));
-		tituloCine.setHorizontalAlignment(SwingConstants.CENTER);
-		tituloCine.setBounds(351, 26, 287, 76);
-		contentPane.add(tituloCine);
-		
-		
-		
-
 
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
 		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-        
+       
+			
 		
-		getMovies(((ArrayList<?>) selectMovie.getFuncions().get(0)).get(4), ((ArrayList<?>) selectMovie.getFuncions().get(0)).get(3).toString(),  ((ArrayList<?>) selectMovie.getFuncions().get(0)).get(1).toString());
-		getMovies(((ArrayList<?>) selectMovie.getFuncions().get(1)).get(4), ((ArrayList<?>) selectMovie.getFuncions().get(1)).get(3).toString(),  ((ArrayList<?>) selectMovie.getFuncions().get(1)).get(1).toString());
-		getMovies(((ArrayList<?>) selectMovie.getFuncions().get(2)).get(4), ((ArrayList<?>) selectMovie.getFuncions().get(2)).get(3).toString(),  ((ArrayList<?>) selectMovie.getFuncions().get(2)).get(1).toString());
+			getPeli(((ArrayList<?>) asignarPelicula.getFuncions().get(0)).get(4), ((ArrayList<?>) asignarPelicula.getFuncions().get(0)).get(3).toString(),  ((ArrayList<?>) asignarPelicula.getFuncions().get(0)).get(1).toString());
+			getPeli(((ArrayList<?>) asignarPelicula.getFuncions().get(1)).get(4), ((ArrayList<?>) asignarPelicula.getFuncions().get(1)).get(3).toString(),  ((ArrayList<?>) asignarPelicula.getFuncions().get(1)).get(1).toString());
+			getPeli(((ArrayList<?>) asignarPelicula.getFuncions().get(2)).get(4), ((ArrayList<?>) asignarPelicula.getFuncions().get(2)).get(3).toString(),  ((ArrayList<?>) asignarPelicula.getFuncions().get(2)).get(1).toString());
+		
+		
+			
 
-		panelDataUser ();
-		buttonsPanel();
-		decorationView();
-	
+		getAccionesCliente(fechahoy, datoCedula, datoNombre);
+		this.setLocationRelativeTo(null);
+	    
 }
 	
 	
 
-	public void getMovies(Object image, String texto, String posicion) {
+	public void getPeli(Object image, String texto, String posicion) {
+		
+		
+		
 		JButton ButtonPelicula = new JButton();
-		ButtonPelicula.setSize(200, 300);
-		ImageIcon imageTemp = new ImageIcon("imagenes/"+image+"");
-		Icon icon = new ImageIcon(imageTemp.getImage().getScaledInstance(ButtonPelicula.getWidth(), ButtonPelicula.getHeight(), Image.SCALE_DEFAULT));
-		ButtonPelicula.setIcon(icon);
+		ButtonPelicula.setIcon(new ImageIcon("imagenes/"+image+""));
 		ButtonPelicula.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sillas.peliculaSeleccionada = posicion;
 				
-	}
+				if(nombre == "") {
+					JOptionPane.showMessageDialog(null, "Inicia Sesion Primero");
+				
+				}else {
+					
+					if (posicion.equals("0") ) {
+						
+						horaPelicula = asignarPelicula.getFuncions().get(0).get(2);
+						nombrePelicula = asignarPelicula.getFuncions().get(0).get(5);
+						
+					} else if(posicion.equals("1")) {
+						horaPelicula = asignarPelicula.getFuncions().get(1).get(2);
+						nombrePelicula = asignarPelicula.getFuncions().get(1).get(5);
+					} else {
+						horaPelicula = asignarPelicula.getFuncions().get(2).get(2);
+						nombrePelicula =  asignarPelicula.getFuncions().get(2).get(5);
+					}
+					
+					ViewSeleccionSillas ventanaSillas = new ViewSeleccionSillas( posicion, datoTextField);
+					ventanaSillas.setVisible(true);								
+					
+				}
+			}
 		});
-		ButtonPelicula.setBounds(59, 111, 250, 310);
+		ButtonPelicula.setBounds(59, 129, 250, 310);
 		contentPane.add(ButtonPelicula);
-		JLabel txtPelicula = new JLabel( "<html><p>" + texto + "</p></html>");
-		txtPelicula.setForeground(Color.WHITE);
-		txtPelicula.setVerticalAlignment(SwingConstants.TOP);
-		if (posicion.equals("0") || posicion.equals("3") || posicion.equals("6")) {
+		 txtPelicula1 = new JLabel( "<html><p>" + texto + "</p></html>");
+		txtPelicula1.setVerticalAlignment(SwingConstants.TOP);
+		txtPelicula1.setForeground(Color.white);
+		
+		
+		if (posicion.equals("0") ) {
 			ButtonPelicula.setBounds(59, 129, 250, 310);
-			txtPelicula.setBounds(59, 451, 266, 160);
+			txtPelicula1.setBounds(59, 451, 266, 160);
 		} else if(posicion.equals("1")) {
-			txtPelicula.setBounds(382, 451, 242, 176);
+			txtPelicula1.setBounds(382, 451, 242, 176);
 			ButtonPelicula.setBounds(382, 129, 242, 310);
 		} else {
 			ButtonPelicula.setBounds(691, 129, 250, 310);
-			txtPelicula.setBounds(691, 451, 250, 190);
+			txtPelicula1.setBounds(691, 451, 250, 190);
 		}
-		contentPane.add(txtPelicula);
-		
-    }
-	public void panelDataUser ( ) {
-		JLabel lblCdulaClei = new JLabel("Cédula cliente :");
-		lblCdulaClei.setHorizontalAlignment(SwingConstants.LEFT);
-		lblCdulaClei.setForeground(Color.WHITE);
-		lblCdulaClei.setFont(new Font("Sylfaen", Font.BOLD, 14));
-		lblCdulaClei.setBounds(59, 599, 106, 24);
-		contentPane.add(lblCdulaClei);
-		
-		textFieldCedula = new JTextField();
-		textFieldCedula.setColumns(10);
-		textFieldCedula.setBounds(176, 598, 226, 20);
-		contentPane.add(textFieldCedula);
-		
-		JLabel lblBienvenido = new JLabel("Bienvenido ");
-		lblBienvenido.setHorizontalAlignment(SwingConstants.LEFT);
-		lblBienvenido.setForeground(Color.WHITE);
-		lblBienvenido.setFont(new Font("Sylfaen", Font.BOLD, 14));
-		lblBienvenido.setBounds(59, 643, 106, 24);
-		contentPane.add(lblBienvenido);
-		
-	
+		contentPane.add(txtPelicula1);
 		
 	}
 	
-	public void buttonsPanel() {
-		JButton rechargeButton = new JButton("Recargar");
-		rechargeButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				ViewRecharge viewRecharge = new ViewRecharge();
-				viewRecharge.setVisible(true);
-			}
-		});
-		rechargeButton.setVerticalAlignment(SwingConstants.BOTTOM);
-		rechargeButton.setForeground(Color.BLACK);
-		rechargeButton.setFont(new Font("Sylfaen", Font.BOLD, 17));
-		rechargeButton.setBorder(null);
-		rechargeButton.setBackground(Color.LIGHT_GRAY);
-		rechargeButton.setAutoscrolls(true);
-		rechargeButton.setBounds(454, 646, 141, 31);
-		contentPane.add(rechargeButton);
+	
+       
+	
 		
-		JButton btnSiguiente = new JButton("Siguiente");
-		btnSiguiente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				ViewSalaCine viewSala = new ViewSalaCine();
-				viewSala.setVisible(true);
+		
+		@SuppressWarnings({ "unchecked", "rawtypes" })
+		public void getAccionesCliente(LocalDate fechahoy,String datoCedula, String datoNombre) {
+
+			JLabel TxtCliente = new JLabel("Cédula");
+			TxtCliente.setFont(new Font("Sylfaen", Font.PLAIN, 16));
+			TxtCliente.setForeground(Color.WHITE);
+			TxtCliente.setBounds(37, 640, 61, 32);
+			contentPane.add(TxtCliente);
+			
+			
+		
+			textFieldIngresoCedula = new JTextField(datoCedula);
+			
+			textFieldIngresoCedula.setBounds(119, 640, 142, 25);
+			contentPane.add(textFieldIngresoCedula);
+			
+			
+			capturar = new JButton("OK");
+			capturar.setBackground(Color.WHITE);
+			capturar.addActionListener(this);
+			capturar.setBounds(290, 642, 72, 23);
+			contentPane.add(capturar);
+			
+			 txtNombrePersona = new JLabel(datoNombre);
+			 txtNombrePersona.setFont(new Font("Sylfaen", Font.PLAIN, 16));
+			 txtNombrePersona.setForeground(Color.WHITE);
+			txtNombrePersona.setBounds(394, 643, 194, 27);
+			contentPane.add(txtNombrePersona);
+			
+			
+			
+			buttomRecargar = new JButton("Recargar");
+			buttomRecargar.setBackground(Color.WHITE);
+			buttomRecargar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			buttomRecargar.addActionListener(this);
+			buttomRecargar.setBounds(761, 634, 153, 36);
+			contentPane.add(buttomRecargar);
+			
+			
+			JLabel txtNoTienesCuenta = new JLabel("¿No tienes Cuenta Aún?");
+			txtNoTienesCuenta.setHorizontalAlignment(SwingConstants.LEFT);
+			txtNoTienesCuenta.setFont(new Font("Sylfaen", Font.PLAIN, 16));
+			txtNoTienesCuenta.setForeground(Color.WHITE);
+			txtNoTienesCuenta.setBounds(37, 703, 179, 28);
+			contentPane.add(txtNoTienesCuenta);
+		
+			
+			buttomRegistrarse = new JButton("Registrarse");
+			buttomRegistrarse.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			buttomRegistrarse.setBackground(Color.WHITE);
+			buttomRegistrarse.addActionListener(this);
 				
-			}
-		});
-		btnSiguiente.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnSiguiente.setForeground(Color.BLACK);
-		btnSiguiente.setFont(new Font("Sylfaen", Font.BOLD, 21));
-		btnSiguiente.setBackground(Color.LIGHT_GRAY);
-		btnSiguiente.setAutoscrolls(true);
-		btnSiguiente.setBounds(716, 606, 186, 49);
-		contentPane.add(btnSiguiente);
+			buttomRegistrarse.setBounds(292, 698, 117, 29);
+			contentPane.add(buttomRegistrarse);
+			
+			
+			
+			
+			JLabel txtFecha = new JLabel(fechahoy.toString());
+			txtFecha.setForeground(Color.WHITE);
+			txtFecha.setFont(new Font("Sylfaen", Font.PLAIN, 16));
+			txtFecha.setBounds(37, 29, 90, 24);
+			contentPane.add(txtFecha);
+			
+			comboBoxDiaSeleccionado = new JComboBox();
+			comboBoxDiaSeleccionado.setBackground(Color.WHITE);
+
+			comboBoxDiaSeleccionado.setBounds(137, 25, 53, 27);
+			contentPane.add(comboBoxDiaSeleccionado);
+			
+			
+			 ButtomBuscar = new JButton("Buscar");
+			 ButtomBuscar.setBorder(UIManager.getBorder("Button.border"));
+			 ButtomBuscar.setBackground(Color.WHITE);
+			ButtomBuscar.setBounds(37, 67, 80, 29);
+			 ButtomBuscar.addActionListener(this);
+			contentPane.add(ButtomBuscar);
+			
+			 
+			
+			
+			
+			comboBoxDiaSeleccionado.addItem("21");
+			comboBoxDiaSeleccionado.addItem("22");
+			comboBoxDiaSeleccionado.addItem("23");
+			
+			decorationView();
+			
+		}
+	public void decorationView () {
+		JLabel lblCineQuindio = new JLabel("Cine Quindío");
+		lblCineQuindio.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCineQuindio.setForeground(Color.WHITE);
+		lblCineQuindio.setFont(new Font("Sylfaen", Font.BOLD, 30));
+		lblCineQuindio.setBounds(383, 45, 235, 51);
+		contentPane.add(lblCineQuindio);
 		
-		JLabel lblNombreCliente = new JLabel("\\");
-		lblNombreCliente.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNombreCliente.setForeground(Color.WHITE);
-		lblNombreCliente.setFont(new Font("Sylfaen", Font.BOLD, 13));
-		lblNombreCliente.setBounds(176, 642, 116, 25);
-		contentPane.add(lblNombreCliente);
-		
-		JButton btnValidar = new JButton("Validar");
-		btnValidar.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnValidar.setForeground(Color.BLACK);
-		btnValidar.setFont(new Font("Sylfaen", Font.BOLD, 17));
-		btnValidar.setBorder(null);
-		btnValidar.setBackground(Color.LIGHT_GRAY);
-		btnValidar.setAutoscrolls(true);
-		btnValidar.setBounds(454, 591, 141, 31);
-		contentPane.add(btnValidar);
-		
-		JButton btnCrearusuario = new JButton("Crear usuario");
-		btnCrearusuario.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnCrearusuario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				ViewRegister viewRegister = new ViewRegister();
-				viewRegister.setVisible(true);
-			}
-		});
-		btnCrearusuario.setForeground(Color.BLACK);
-		btnCrearusuario.setFont(new Font("Sylfaen", Font.BOLD, 17));
-		btnCrearusuario.setBackground(Color.LIGHT_GRAY);
-		btnCrearusuario.setAutoscrolls(true);
-		btnCrearusuario.setBounds(752, 59, 141, 41);
-		contentPane.add(btnCrearusuario);
-	}
-	
-	public void decorationView() {
 		Panel panel = new Panel();
 		panel.setBackground(Color.DARK_GRAY);
-		panel.setBounds(752, 0, 232, 34);
+		panel.setForeground(Color.BLACK);
+		panel.setBounds(809, 0, 175, 45);
 		contentPane.add(panel);
 		
 		Panel panel_1 = new Panel();
+		panel_1.setForeground(Color.BLACK);
 		panel_1.setBackground(Color.GRAY);
-		panel_1.setBounds(615, 0, 141, 20);
+		panel_1.setBounds(641, 0, 175, 29);
 		contentPane.add(panel_1);
 		
 		Panel panel_1_1 = new Panel();
+		panel_1_1.setForeground(Color.BLACK);
 		panel_1_1.setBackground(Color.LIGHT_GRAY);
-		panel_1_1.setBounds(490, 0, 129, 10);
+		panel_1_1.setBounds(474, 0, 175, 16);
 		contentPane.add(panel_1_1);
+	}
 		
-		Panel panel_2 = new Panel();
-		panel_2.setBackground(Color.DARK_GRAY);
-		panel_2.setBounds(0, 677, 232, 34);
-		contentPane.add(panel_2);
 		
-		Panel panel_1_2 = new Panel();
-		panel_1_2.setBackground(Color.GRAY);
-		panel_1_2.setBounds(232, 691, 141, 20);
-		contentPane.add(panel_1_2);
 		
-		Panel panel_1_1_1 = new Panel();
-		panel_1_1_1.setBackground(Color.LIGHT_GRAY);
-		panel_1_1_1.setBounds(373, 701, 129, 10);
-		contentPane.add(panel_1_1_1);
 		
-		Panel panel_1_1_1_1 = new Panel();
-		panel_1_1_1_1.setBackground(Color.DARK_GRAY);
-		panel_1_1_1_1.setBounds(0, 0, 10, 677);
-		contentPane.add(panel_1_1_1_1);
+	@Override
+	public void actionPerformed(ActionEvent e) {
 		
-		Panel panel_1_1_1_1_1 = new Panel();
-		panel_1_1_1_1_1.setBackground(Color.DARK_GRAY);
-		panel_1_1_1_1_1.setBounds(974, 34, 10, 677);
-		contentPane.add(panel_1_1_1_1_1);
 		
-		JLabel lblCartelera = new JLabel("Cartelera");
-		lblCartelera.setHorizontalAlignment(SwingConstants.LEFT);
-		lblCartelera.setForeground(Color.WHITE);
-		lblCartelera.setFont(new Font("Javanese Text", Font.PLAIN, 24));
-		lblCartelera.setBounds(59, 71, 141, 49);
-		contentPane.add(lblCartelera);
+		if (e.getSource() == ButtomBuscar) {	
+		   diaSeleccionado = (String) comboBoxDiaSeleccionado.getSelectedItem();
+		   
+		}
+		
+		if (e.getSource()== capturar) {
+			
+			datoTextField = textFieldIngresoCedula.getText();
+			if(datosPersona.estaEnBaseDatos(datoTextField.trim())) {
+				
+				
+             nombre	= datosPersona.getName(datoTextField.trim() );
+             txtNombrePersona.setText(nombre);
+             
+             
+             saldoActual = datosPersona.getSaldo(datoTextField.trim());
+             
+                 
+             
+             
+			    JOptionPane.showMessageDialog(null, "Inicio Sesion Correcto");
+
+
+			} else {
+				
+				datoTextField = "";
+				textFieldIngresoCedula.setText(datoTextField);
+				txtNombrePersona.setText(nombre);
+				nombre = "";
+				saldoActual = 0;
+				JOptionPane.showMessageDialog(null, "No Tienes Cuenta, Create Una");
+				
+				
+			}
+		}
+		
+		if (e.getSource()== buttomRecargar) {
+			
+			if(nombre == "") {
+				JOptionPane.showMessageDialog(null, "Inicia Sesion Primero");
+			
+			} else {
+				
+				ViewRecarga ventanaRecargar  = new 	ViewRecarga(datoTextField, nombre,saldoActual);
+				ventanaRecargar.setVisible(true);
+				
+			}
+		}
+		
+		if (e.getSource()== buttomRegistrarse) {
+			
+			ViewRegister ventanaRegistrarse = new ViewRegister();
+			ventanaRegistrarse.setVisible(true);
+		
+		}
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
 	}
 }
+
