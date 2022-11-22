@@ -48,7 +48,7 @@ public class ViewConfiteria extends JFrame implements ActionListener {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setResizable(false);
 		setSize(500,500);
-		setBounds(250, 50, 1000, 780);
+		setBounds(250, 50, 1000, 720);
 		getContentPane().setLayout(null);
 		getConfiteria();
 		this.setLocationRelativeTo(null);
@@ -70,7 +70,7 @@ public class ViewConfiteria extends JFrame implements ActionListener {
 		
 		JLabel label_imagen1 = new JLabel("");
 		label_imagen1.setIcon(new ImageIcon("imagenes/COMBO-1.png"));
-		label_imagen1.setBounds(92, 111, 388, 232);
+		label_imagen1.setBounds(92, 85, 349, 206);
 		getContentPane().add(label_imagen1);
 		
 		spinner_combo1 = new JSpinner(new SpinnerNumberModel(0,0,10,1));
@@ -84,7 +84,7 @@ public class ViewConfiteria extends JFrame implements ActionListener {
 			}
 		
 		});
-		spinner_combo1.setBounds(253, 355, 36, 20);
+		spinner_combo1.setBounds(253, 311, 36, 20);
 		getContentPane().add(spinner_combo1);
 		
 		
@@ -93,7 +93,7 @@ public class ViewConfiteria extends JFrame implements ActionListener {
 		
 		JLabel label_imagen2 = new JLabel("");
 		label_imagen2.setIcon(new ImageIcon("imagenes/COMBO-2.png"));
-		label_imagen2.setBounds(92, 436, 390, 231);
+		label_imagen2.setBounds(92, 365, 349, 206);
 		getContentPane().add(label_imagen2);
 		
 		spinner_combo2 = new JSpinner();
@@ -104,7 +104,7 @@ public class ViewConfiteria extends JFrame implements ActionListener {
 			}
 		
 		});
-		spinner_combo2.setBounds(718, 354, 36, 22);
+		spinner_combo2.setBounds(717, 310, 36, 22);
 		getContentPane().add(spinner_combo2);
 		
 		
@@ -113,7 +113,7 @@ public class ViewConfiteria extends JFrame implements ActionListener {
 		
 		JLabel label_imagen3 = new JLabel("");
 		label_imagen3.setIcon(new ImageIcon("imagenes/COMBO-3.png"));
-		label_imagen3.setBounds(542, 114, 390, 229);
+		label_imagen3.setBounds(537, 85, 349, 206);
 		getContentPane().add(label_imagen3);
 		
 		 spinner_combo3 = new JSpinner();
@@ -124,14 +124,14 @@ public class ViewConfiteria extends JFrame implements ActionListener {
 				}
 			
 			});
-		spinner_combo3.setBounds(253, 680, 42, 20);
+		spinner_combo3.setBounds(253, 630, 42, 20);
 		getContentPane().add(spinner_combo3);
 		
 	
 		 ButtomSiguiente = new JButton("Siguiente");
 			ButtomSiguiente.addActionListener(this);
 
-		 ButtomSiguiente.setBounds(779, 615, 160, 51);
+		 ButtomSiguiente.setBounds(650, 518, 160, 51);
 		getContentPane().add(ButtomSiguiente);
 		
 		

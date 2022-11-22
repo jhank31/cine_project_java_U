@@ -263,7 +263,7 @@ public class ViewSeleccionSillas extends JFrame implements ActionListener{
 		datosSillasModel = new  ModelSillas();
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(250, 50, 1000, 780);
+		setBounds(250, 50, 1000, 730);
 		getContentPane().setLayout(null);
 		
 		getSillas();
@@ -1640,12 +1640,12 @@ public class ViewSeleccionSillas extends JFrame implements ActionListener{
 		ButtonSiguiente = new JButton("SIGUIENTE");
 		ButtonSiguiente.addActionListener(this);
 			
-		ButtonSiguiente.setBounds(777, 660, 139, 47);
+		ButtonSiguiente.setBounds(775, 622, 139, 47);
 		getContentPane().add(ButtonSiguiente);
 		
 		ButtonAtras = new JButton("Atras");
 		ButtonAtras.addActionListener(this);
-		ButtonAtras.setBounds(72, 660, 139, 47);
+		ButtonAtras.setBounds(71, 622, 139, 47);
 		getContentPane().add(ButtonAtras);
 		
 		

@@ -73,8 +73,8 @@ public class ViewMovies extends JFrame implements ActionListener  {
 		asignarPelicula = new ModelMovie();
 		datosPersona = new ModelUser();
 		setResizable(false);
-		setSize(500,500);
-		setBounds(250, 50, 1000, 780);
+		setSize(400,500);
+		setBounds(50, 50, 1000, 720);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -170,27 +170,27 @@ public class ViewMovies extends JFrame implements ActionListener  {
 			JLabel TxtCliente = new JLabel("Cédula");
 			TxtCliente.setFont(new Font("Sylfaen", Font.PLAIN, 16));
 			TxtCliente.setForeground(Color.WHITE);
-			TxtCliente.setBounds(37, 640, 61, 32);
+			TxtCliente.setBounds(37, 591, 61, 32);
 			contentPane.add(TxtCliente);
 			
 			
 		
 			textFieldIngresoCedula = new JTextField(datoCedula);
 			
-			textFieldIngresoCedula.setBounds(119, 640, 142, 25);
+			textFieldIngresoCedula.setBounds(118, 592, 142, 25);
 			contentPane.add(textFieldIngresoCedula);
 			
 			
 			capturar = new JButton("OK");
 			capturar.setBackground(Color.WHITE);
 			capturar.addActionListener(this);
-			capturar.setBounds(290, 642, 72, 23);
+			capturar.setBounds(290, 593, 72, 23);
 			contentPane.add(capturar);
 			
 			 txtNombrePersona = new JLabel(datoNombre);
 			 txtNombrePersona.setFont(new Font("Sylfaen", Font.PLAIN, 16));
 			 txtNombrePersona.setForeground(Color.WHITE);
-			txtNombrePersona.setBounds(394, 643, 194, 27);
+			txtNombrePersona.setBounds(383, 594, 194, 27);
 			contentPane.add(txtNombrePersona);
 			
 			
@@ -199,7 +199,7 @@ public class ViewMovies extends JFrame implements ActionListener  {
 			buttomRecargar.setBackground(Color.WHITE);
 			buttomRecargar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			buttomRecargar.addActionListener(this);
-			buttomRecargar.setBounds(761, 634, 153, 36);
+			buttomRecargar.setBounds(739, 591, 153, 36);
 			contentPane.add(buttomRecargar);
 			
 			
@@ -207,7 +207,7 @@ public class ViewMovies extends JFrame implements ActionListener  {
 			txtNoTienesCuenta.setHorizontalAlignment(SwingConstants.LEFT);
 			txtNoTienesCuenta.setFont(new Font("Sylfaen", Font.PLAIN, 16));
 			txtNoTienesCuenta.setForeground(Color.WHITE);
-			txtNoTienesCuenta.setBounds(37, 703, 179, 28);
+			txtNoTienesCuenta.setBounds(37, 634, 179, 28);
 			contentPane.add(txtNoTienesCuenta);
 		
 			
@@ -216,7 +216,7 @@ public class ViewMovies extends JFrame implements ActionListener  {
 			buttomRegistrarse.setBackground(Color.WHITE);
 			buttomRegistrarse.addActionListener(this);
 				
-			buttomRegistrarse.setBounds(292, 698, 117, 29);
+			buttomRegistrarse.setBounds(290, 632, 117, 29);
 			contentPane.add(buttomRegistrarse);
 			
 			
