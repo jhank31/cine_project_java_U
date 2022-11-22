@@ -83,7 +83,8 @@ public class ViewFactura extends JFrame implements ActionListener {
 		contentPane.add(label_nombre_usuario);
 		
 		JLabel label_espacio_nombre_usuario = new JLabel(nombre);
-		label_espacio_nombre_usuario.setBounds(264, 80, 182, 24);
+		label_espacio_nombre_usuario.setForeground(Color.WHITE);
+		label_espacio_nombre_usuario.setBounds(292, 80, 182, 24);
 		contentPane.add(label_espacio_nombre_usuario);
 		
 		JLabel label_Tipo_Tarjeta = new JLabel("TI");
@@ -132,6 +133,7 @@ public class ViewFactura extends JFrame implements ActionListener {
 		contentPane.add(label_pelicula);
 		
 		JLabel label_espacio_pelicula = new JLabel(ViewMovies.nombrePelicula);
+		label_espacio_pelicula.setForeground(Color.WHITE);
 		label_espacio_pelicula.setBounds(292, 203, 254, 24);
 		contentPane.add(label_espacio_pelicula);
 		

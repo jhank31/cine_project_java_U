@@ -74,6 +74,9 @@ public class ViewConfiteria extends JFrame implements ActionListener {
 		getContentPane().add(label_imagen1);
 		
 		spinner_combo1 = new JSpinner(new SpinnerNumberModel(0,0,10,1));
+		SpinnerNumberModel nm = new SpinnerNumberModel();
+		nm.setMaximum(50);
+		nm.setMaximum(0);
 		spinner_combo1.addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent e) {
