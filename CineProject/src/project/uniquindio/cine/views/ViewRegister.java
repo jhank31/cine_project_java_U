@@ -32,13 +32,12 @@ public class ViewRegister extends JFrame implements ActionListener {
 		private JTextField textFieldIntroducirMontoRecargar;
 		private JCheckBox checkBoxAsignarBasic ;
 		private JButton buttomCrearUsuario;
-		private ModelUser datosPersona;
-
+		private ModelUser datosPersona = new ModelUser();
+	
 		
 		public ViewRegister() {
 			this.setLocationRelativeTo(null);
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			datosPersona = new ModelUser();
 			setResizable(false);	
 			this.setLocationRelativeTo(null);
 			setSize(500,500);
@@ -178,8 +177,8 @@ public class ViewRegister extends JFrame implements ActionListener {
 				System.out.println(nombre);			
 				System.out.println(basic);
 				System.out.println(numeroMontoRecarga);
-	
 				datosPersona.addPersona(cedula,nombre,basic,numeroMontoRecarga);
+				ModelUser.setPosicionClienteLogueado(datosPersona.getIndexPer(cedula));
 				
 				dispose();
 				JOptionPane.showMessageDialog(null, "Registro Exitoso");

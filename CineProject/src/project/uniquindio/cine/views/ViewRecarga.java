@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 import project.uniquindio.cine.models.ModelUser;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -23,6 +24,8 @@ public class ViewRecarga extends JFrame implements ActionListener{
 	private JButton buttomComprar;
 	private ModelUser datosPersona;
 	String datoCedula;
+	private JCheckBox checkBoxGold ;
+	private JCheckBox checkBoxBasic;
 	String datoNombre;
 
 	
@@ -32,7 +35,16 @@ public class ViewRecarga extends JFrame implements ActionListener{
 	 */
 	
 	public ViewRecarga(String cedula, String nombre, int saldoActual) {
-	
+		checkBoxGold = new JCheckBox("Gold");
+		checkBoxBasic = new JCheckBox("Basic");
+		
+		Integer membresiaActual = Integer.parseInt(ModelUser.datosPersona.get(ModelUser.getPosicionClienteLogueado()).get(2).toString());
+		if(  !(membresiaActual == 2) ) {
+			checkBoxGold.setEnabled(false);
+		}
+		if(  !(membresiaActual == 1) ) {
+			checkBoxBasic.setEnabled(false);
+		}
 		datoCedula = cedula;
 		datoNombre = nombre;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -78,13 +90,14 @@ public class ViewRecarga extends JFrame implements ActionListener{
 			
 			
 			
-			JCheckBox checkBoxGold = new JCheckBox("Gold");
+			
 			checkBoxGold.setBackground(Color.WHITE);
 			checkBoxGold.setForeground(Color.BLACK);
 			checkBoxGold.setBounds(43, 140, 74, 23);
+			checkBoxGold.addActionListener(this);
 			contentPane.add(checkBoxGold);
 			
-			JCheckBox checkBoxBasic = new JCheckBox("Basic");
+			 
 			checkBoxBasic.setBackground(Color.WHITE);
 			checkBoxBasic.setForeground(Color.BLACK);
 			checkBoxBasic.setBounds(147, 140, 74, 23);
@@ -95,7 +108,7 @@ public class ViewRecarga extends JFrame implements ActionListener{
 			txtInfoSaldoActual.setForeground(Color.WHITE);
 			txtInfoSaldoActual.setBounds(43, 185, 113, 16);
 			contentPane.add(txtInfoSaldoActual);
-			JLabel txtInfoSaldoActualPerson = new JLabel("" + saldoActual);
+			JLabel txtInfoSaldoActualPerson = new JLabel("" + ModelUser.getSaldoActualPer());
 			txtInfoSaldoActualPerson.setFont(new Font("Tahoma", Font.PLAIN, 13));
 			txtInfoSaldoActualPerson.setForeground(Color.WHITE);
 			txtInfoSaldoActualPerson.setBounds(156, 185, 121, 16);
@@ -126,14 +139,19 @@ public class ViewRecarga extends JFrame implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
+			
+			
+			
 			if(e.getSource() == buttomComprar) {
 				
 				String datoMontoRecargar = textFieldIngresarMonto.getText();
 				int montoRecargar = Integer.parseInt(datoMontoRecargar);
 				datosPersona.addRecarga(datoCedula, montoRecargar);
+				ModelUser.setSaldoActualPer(ModelUser.getSaldoActualPer() + montoRecargar);
 				
 				dispose();
 			}
+			
 			
 		}
 		

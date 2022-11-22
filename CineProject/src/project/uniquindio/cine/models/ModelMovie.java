@@ -3,6 +3,7 @@ package project.uniquindio.cine.models;
 import java.util.ArrayList;
 
 public class ModelMovie {
+	public static String movieSelect = "";
 	public ArrayList<ArrayList<String>> getFuncions() {
 		ArrayList<ArrayList<String>> funciones= new ArrayList<ArrayList<String>>();
 		String hunted = "Hunted: 1Hr 27Min, Clasificacion +18, Sinopsis: La compañía del lobo es mejor que la del hombre. Érase una vez, en una época de locos, una mujer que conoció a un hombre. La mujer bailó con él. El hombre la besó y la agarró. La mujer se escapó. Él la persiguió. Nada del otro mundo. ¿O sí?";

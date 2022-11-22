@@ -5,7 +5,9 @@ package project.uniquindio.cine.views;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import project.uniquindio.cine.models.ModelMovie;
 import project.uniquindio.cine.models.ModelSillas;
+import project.uniquindio.cine.models.ModelUser;
 
 import javax.swing.JLabel;
 import javax.swing.JToggleButton;
@@ -295,10 +297,12 @@ public class ViewSeleccionSillas extends JFrame implements ActionListener{
 	}
 	
 	
-	static void mandarAsientoSeleccionado(JToggleButton name, int posicion) {
+	static void mandarAsientoSeleccionado(JToggleButton name, Integer posicion) {
 		
 		if (name.isSelected()) {
+			ModelUser.setNumeroSillas(ModelUser.getNumeroSillas() + 1);
 			datosSillasModel.enviarPuestosOcupados(posicion,datoPosicionSala );
+			ModelSillas.add("Sala " +ModelMovie.movieSelect + " Silla " + posicion.toString() + ", ");
 			name.setEnabled(false);
 			montoPorSillasSelec = montoPorSillasSelec+12000;
 		}
@@ -307,9 +311,11 @@ public class ViewSeleccionSillas extends JFrame implements ActionListener{
 	
 	
 	
-	static void mandarAsientoSeleccionadoPreferencial(JToggleButton name, int posicion) {
+	static void mandarAsientoSeleccionadoPreferencial(JToggleButton name, Integer posicion) {
 		
 		if (name.isSelected()) {
+			ModelUser.setNumeroSillas(ModelUser.getNumeroSillas() + 1);
+			ModelSillas.add("Sala " +ModelMovie.movieSelect + " Silla " + posicion.toString() + ", ");
 			datosSillasModel.enviarPuestosOcupados(posicion,datoPosicionSala );
 			name.setEnabled(false);
 			montoPorSillasSelec = montoPorSillasSelec+16000;
@@ -344,7 +350,7 @@ public class ViewSeleccionSillas extends JFrame implements ActionListener{
 		txtPantalla.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtPantalla.setOpaque(true);
 		txtPantalla.setHorizontalAlignment(SwingConstants.CENTER);
-		txtPantalla.setBounds(283, 23, 327, 22);
+		txtPantalla.setBounds(306, 23, 327, 22);
 			getContentPane().add(txtPantalla);
 		
 			
